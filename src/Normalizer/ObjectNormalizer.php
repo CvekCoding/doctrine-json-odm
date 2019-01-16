@@ -20,6 +20,7 @@ use Symfony\Component\Serializer\SerializerInterface;
  * Transforms an object to an array.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
+ * @author Sergey Logachev <svlogachev@gmail.com>
  */
 final class ObjectNormalizer implements NormalizerInterface, DenormalizerInterface, SerializerAwareInterface, CacheableSupportsMethodInterface
 {
