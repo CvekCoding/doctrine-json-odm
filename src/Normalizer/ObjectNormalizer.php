@@ -47,6 +47,13 @@ final class ObjectNormalizer implements NormalizerInterface, DenormalizerInterfa
      */
     public function normalize($object, $format = null, array $context = [])
     {
+	    if ('graphql' === $format) {
+		    $normalizedData = $this->objectNormalizer->normalize($object, $format, $context);
+		    unset($normalizedData[self::TYPE_FIELD]);
+
+		    return $normalizedData;
+	    }
+
         return \array_merge([self::TYPE_FIELD => ClassUtils::getClass($object)], $this->objectNormalizer->normalize($object, $format, $context));
     }
 
