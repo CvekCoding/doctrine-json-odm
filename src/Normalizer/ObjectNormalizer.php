@@ -27,6 +27,7 @@ final class ObjectNormalizer implements NormalizerInterface, DenormalizerInterfa
     // To not use the current normalizer
     const WONT_DENORMALIZE = 'dunglas_normalizer_wont_denormalize';
     const TYPE_FIELD = '#type';
+    const FORMAT_FOR_DB = 'json';
 
     /**
      * @var NormalizerInterface|DenormalizerInterface
@@ -50,7 +51,7 @@ final class ObjectNormalizer implements NormalizerInterface, DenormalizerInterfa
     {
     	$normalizedObject = $this->objectNormalizer->normalize($object, $format, $context);
 
-	    if ('json' === $format) {
+	    if (self::FORMAT_FOR_DB === $format) {
 		    return \array_merge([self::TYPE_FIELD => ClassUtils::getClass($object)], $normalizedObject);
 	    }
 
